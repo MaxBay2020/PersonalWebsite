@@ -1,0 +1,13 @@
+/*File Name: style.css*/
+/*Created by: Cong Wang*/
+/*Student Number: #301098547*/
+/*Created on: 10.2.2020*/
+
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}

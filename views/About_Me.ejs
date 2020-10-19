@@ -1,0 +1,140 @@
+<!-- File Name: About_Me.ejs -->
+<!-- Created by: Cong Wang -->
+<!-- Student Number: #301098547 -->
+<!-- Created on: 10.2.2020 -->
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/public/images/icon.png">
+
+    <title><%= data.title %>></title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <!--    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
+
+    <!-- Custom styles for this template -->
+    <link href="/public/stylesheets/carousel.css" rel="stylesheet">
+</head>
+
+<!-- NAVBAR
+================================================== -->
+<body>
+<div class="navbar-wrapper">
+    <div class="container">
+
+<!--Common header-->
+<%- include('header'); %>
+    </div>
+</div>
+
+<!--common content-->
+<%- include('content'); %>
+
+<!-- Marketing messaging and featurettes
+================================================== -->
+<!-- Wrap the rest of the page in another container to center all the content. -->
+
+<div class="container marketing">
+    <!-- START THE FEATURETTES -->
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading"><%= data.aboutMeTitles[0] %><br><span class="text-muted">I am Cong Wang.</span></h2>
+            <p class="lead">I am currently studying game programming in Centennial College in Canada.
+                A big fan of coding, learning new things, piano, and cats.
+                Also enjoy working out. I believe regular exercise keeps me energetic.</p>
+        </div>
+        <div class="col-md-5">
+            <img src="/public/images/profile.JPG" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading"><%= data.aboutMeTitles[1] %><br><span class="text-muted">Fanatic</span></h2>
+            <p class="lead">I have made some games both with team work and individual. You can visit my <a target="_blank" href="https://github.com/MaxBay2020"><code>Github</code></a>
+                <br>Games include
+                <% data.games.forEach(result=>{ %>
+                    <%= result %>,
+                <% }); %>
+                etc..
+                Technologies include UGUI, DOTween, Animation, Particle System, Audio, etc.
+                <br>You can also check my <a href="/public/resumes/unity.pdf"  target="_blank"><code>resume</code></a> for Unity3D.
+            </p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img src="/public/images/unity.png" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading"><%= data.aboutMeTitles[2] %><br><span class="text-muted">Front-end Back-end</span></h2>
+            <p class="lead">I have made some B/S applications using Java or NodeJs,
+                such as <br>
+                <% data.bsApp.forEach(result=>{ %>
+                   <%= result %>, <br>
+                <% })%>
+                etc..
+                <br>For more information, please check my <a href="/public/resumes/BackEnd.pdf" target="_blank"><code>resume</code></a> for Web Development.
+            </p>
+        </div>
+        <div class="col-md-5">
+            <img src="/public/images/java.png" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7 col-md-push-5">
+            <h2 class="featurette-heading"><%= data.aboutMeTitles[3] %><br><span class="text-muted">.Net Java</span></h2>
+            <p class="lead">I have made some C/S applications both with team work and individual with .Net. You can visit my <a target="_blank" href="https://github.com/MaxBay2020"><code>Github</code></a>
+                <br>Apps include
+                <% data.csApp.forEach(result=>{ %>
+                    <%= result %>,
+                <% })%>
+                etc..
+                <br>For more information, please check my <a href="/public/resumes/csApp.pdf" target="_blank"><code>resume</code></a> here for C/S Development.
+            </p>
+        </div>
+        <div class="col-md-5 col-md-pull-7">
+            <img src="/public/images/c%23.png" class="featurette-image img-responsive center-block" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+    </div>
+
+<!--common footer-->
+    <%- include('footer'); %>
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+    window.jQuery || document.write('<script src="/node_modules/jquery/dist/jquery.min.js"><\/script>')
+</script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
+<script src="/public/javascripts/holder.min.js"></script>
+<!--&lt;!&ndash; IE10 viewport hack for Surface/desktop Windows 8 bug &ndash;&gt;-->
+<!--<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>-->
+</body>
+</html>
