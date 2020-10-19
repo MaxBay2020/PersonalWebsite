@@ -9,6 +9,7 @@ var bcrypt = require('bcrypt');
 var passport = require('passport');
 var flash = require('express-flash');
 var session = require('express-session');
+var {ensureAuthenticated} = require('../config/auth');
 
 //email helper
 var nodemailer  = require('nodemailer');
@@ -178,6 +179,14 @@ router.get('/content', function (req, res, next) {
             "games":["Runaway Boy", "Space Invader", "Breakout", "Battle City", "Angry Bird", "Snake", "Fishing Joy"],
         }
     })
+})
+
+/*contacts view page*/
+router.get('/contacts', ensureAuthenticated, (req,res) => {
+    res.render('contacts', {
+        data: { 'title': 'Contacts' },
+        username: req.user.username
+    });
 })
 
 

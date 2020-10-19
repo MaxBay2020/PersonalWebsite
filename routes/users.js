@@ -97,8 +97,6 @@ router.post('/register', (req,res)=>{
 
 })
 
-
-
 /*POST user login data*/
 router.post('/login', (req,res, next)=>{
   //whether the user exists
@@ -107,6 +105,13 @@ router.post('/login', (req,res, next)=>{
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);
+})
+
+/*GET user logout*/
+router.get('/logout', (req,res) => {
+    req.logout();
+    req.flash('success_msg', 'You are logged out');
+    res.redirect('/users/login');
 })
 
 module.exports = router;
