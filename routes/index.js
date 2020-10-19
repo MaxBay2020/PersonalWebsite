@@ -10,12 +10,6 @@ var passport = require('passport');
 var flash = require('express-flash');
 var session = require('express-session');
 
-var initializePassport = require('../passport-config');
-
-initializePassport(passport, username => {
-    return users.find(user => user.username === username)
-});
-
 //email helper
 var nodemailer  = require('nodemailer');
 

@@ -13,7 +13,7 @@ var router = require("./routes/index");
 var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
-
+var passport = require('passport');
 
 var mongoose = require('mongoose');
 
@@ -32,6 +32,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+//passport config
+require('./config/passport')(passport);
 
 // view engine setup
 app.set('views', path.join(__dirname, './views/'));
@@ -48,6 +50,10 @@ app.use(session({
   resave: true,
   saveUninitialized: true
 }));
+
+//passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //connect flash
 app.use(flash());
