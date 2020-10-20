@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/public/images/icon.png">
+    <title><%= data.title %></title>
+    <!-- Bootstrap core CSS -->
+    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="/public/stylesheets/carousel.css" rel="stylesheet">
+    <link href="/public/stylesheets/theme.css" rel="stylesheet">
+</head>
+
+<body>
+<div class="navbar-wrapper">
+    <div class="container">
+        <!--Common header-->
+        <% include header %>
+
+        <h2 class="sub-header">Contacts</h2>
+        <br><br>
+        <h3>Welcome,  <%= username %></h3>
+        <h2 class="sub-header">Modify Contact</h2>
+        <form action="/contacts/modify" method="post">
+
+           <input type="hidden" class="form-control" id="id" name="id" value="<%= contact.id%>" required>
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" value="<%= contact.name%>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cellphone">cellphone</label>
+                <input class="form-control" type="text" id="cellphone" name="cellphone" value="<%= contact.cellphone%>" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input class="form-control" type="email" id="email" name="email" value="<%= contact.email%>" >
+            </div>
+
+            <button type="submit" class="btn btn-success">Modify</button>
+            <a href="/contacts/delete" class="btn btn-warning">Delete</a>
+            <a href="/contacts" class="btn btn-default">Cancel</a>
+        </form>
+        </div>
+    </div>
+
+</div>
+</body>
+
+</html>

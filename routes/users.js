@@ -1,3 +1,8 @@
+/*File Name: app.js
+Created by: Cong Wang
+Student Number: #301098547
+Created on: 10.19.2020*/
+
 var express = require('express');
 var router = express.Router();
 const bcrypt = require('bcryptjs');
@@ -101,7 +106,7 @@ router.post('/register', (req,res)=>{
 router.post('/login', (req,res, next)=>{
   //whether the user exists
     passport.authenticate('local', {
-        successRedirect: '/',
+        successRedirect: '/contacts',
         failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next);

@@ -10,6 +10,8 @@ var passport = require('passport');
 var flash = require('express-flash');
 var session = require('express-session');
 var {ensureAuthenticated} = require('../config/auth');
+const fs = require('fs');
+const Contacts = require('../config/contacts');
 
 //email helper
 var nodemailer  = require('nodemailer');
@@ -99,8 +101,8 @@ router.get('/services',function (req,res,next) {
 
 /* GET contact_me page*/
 router.get('/contactme', function (req, res, next) {
-  res.render('contact.ejs', {data: {
-      "title": "Conact Me"
+  res.render('contact', {data: {
+      "title": "Contact Me"
     }
   })
 })
@@ -181,13 +183,82 @@ router.get('/content', function (req, res, next) {
     })
 })
 
-/*contacts view page*/
+/*GET contacts view page*/
 router.get('/contacts', ensureAuthenticated, (req,res) => {
-    res.render('contacts', {
-        data: { 'title': 'Contacts' },
-        username: req.user.username
+    //call find method
+    Contacts.find(function (err, contacts) {
+        if(err){
+            return res.status(500).send('Server Error!');
+        }
+
+        res.render('contacts', {
+            data: { 'title': 'Contacts' },
+            username: req.user.username,
+            contacts: contacts
+        });
+    })
+
+})
+
+/*GET add contact*/
+router.get('/contacts/new',ensureAuthenticated, (req, res) => {
+    res.render('new', {
+        data:{'title': 'Add'},
+        username:req.user.username
     });
 })
 
+/*POST add contact*/
+router.post('/contacts/new', (req,res) => {
+    //call add method
+    Contacts.add(req.body, function (err) {
+        if(err){
+            return res.status(500).send('Server Error!');
+        }
+
+        //redirect to /contacts
+        res.redirect('/contacts');
+    })
+})
+
+/*GET modify info*/
+router.get('/contacts/modify', ensureAuthenticated, (req,res)=>{
+    //find one contact based on id
+    Contacts.findOneById(req.query.id, function (err, contact) {
+        if(err){
+            return res.status(500).send('Server Error!');
+        }
+
+        // render modify ejs, show contact info
+        res.render('modify', {
+            data: {'title': 'Modify'},
+            username:req.user.username,
+            contact:contact
+        })
+    })
+
+})
+
+/*POST modify info*/
+router.post('/contacts/modify', (req,res) => {
+    Contacts.updateById(req.body, function (err) {
+        if(err){
+            return res.status(500).send('Server Error!');
+        }
+
+        res.redirect('/contacts');
+    })
+
+})
+
+/*GET delete contact*/
+router.get('/contacts/delete', (req,res)=>{
+    Contacts.deleteById(req.query.id, function (err) {
+        if(err){
+            return res.status(500).send('Server Error!');
+        }
+        res.redirect('/contacts');
+    })
+})
 
 module.exports = router;

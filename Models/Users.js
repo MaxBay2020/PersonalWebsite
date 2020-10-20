@@ -1,3 +1,8 @@
+/*File Name: app.js
+Created by: Cong Wang
+Student Number: #301098547
+Created on: 10.19.2020*/
+
 const mongoose = require('mongoose');
 
 //structure of document
