@@ -14,16 +14,18 @@ const User = require('../Models/Users');
 
 /*GET login ejs*/
 router.get('/login', (req,res)=>{
-  res.render('login.ejs', {data:{
-      "title": "Log in"
-    }});
+  res.render('login.ejs', {
+      title: "Log in",
+      layout: './layouts/layout2'
+    });
 })
 
 /*GET register ejs*/
 router.get('/register', (req,res)=>{
-  res.render('register.ejs', {data:{
-      "title":"register"
-    }})
+  res.render('register.ejs', {
+      title:"register",
+      layout: './layouts/layout2'
+    })
 })
 
 /*POST user register data*/
@@ -41,9 +43,8 @@ router.post('/register', (req,res)=>{
   if(errors.length > 0){
     //has error
     res.render('register', {
-      data: {
-      'title': 'register'
-            },
+      title: 'register',
+      layout: './layouts/layout2',
       errors,
       username,
       password,
@@ -62,9 +63,8 @@ router.post('/register', (req,res)=>{
               msg:'Email already exists.'
             })
             res.render('register', {
-              data: {
-                'title': 'register'
-              },
+              title: 'register',
+              layout: './layouts/layout2',
               errors,
               username,
               password,

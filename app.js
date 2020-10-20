@@ -9,6 +9,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var router = require("./routes/index");
+const expressLayout = require('express-ejs-layouts');
 
 var passport = require('passport');
 var flash = require('connect-flash');
@@ -38,11 +39,13 @@ require('./config/passport')(passport);
 // view engine setup
 app.set('views', path.join(__dirname, './views/'));
 app.set('view engine', 'ejs');
+app.set('layout', './layouts/layout1', './layouts/layout2');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(expressLayout);
 
 //express session middleware
 app.use(session({

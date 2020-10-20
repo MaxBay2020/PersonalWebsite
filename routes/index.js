@@ -32,77 +32,62 @@ var users=[];
 
 /* GET home page. */
 router.get("/", function (req,res,next) {
-  res.render('Home_Page.ejs', { data:{
-      "title": "Welcome to Cong's Place",
-      "comment":"hello visitor",
-      "hello":["Hello", "こんにちは", "안녕하십니까", "Bonjour", "Hola a todos", "你好"],
-      "status":["Unity3D Programmer","a B/S and C/S Developer","a New Things Follower"],
-      "projects":["Unity3D Games", "B/S Applications", "C/S applications"]
-    }
+  res.render('Home_Page.ejs', {
+      title: "Welcome",
+      comment:"hello visitor",
+      hello:["Hello", "こんにちは", "안녕하십니까", "Bonjour", "Hola a todos", "你好"],
+      status:["Unity3D Programmer","a B/S and C/S Developer","a New Things Follower"],
+      projects:["Unity3D Games", "B/S Applications", "C/S applications"],
+      layout: false
   });
 })
 
 /* GET about_me page*/
 router.get('/aboutme',function (req,res,next) {
-  res.render('About_Me.ejs', {data: {
-      "title":"About Me",
-      "aboutMeTitles": ["Hi, it is nice to see you here!", "Game Programmer", "B/S App Developer", "C/S App Developer"],
-      "things": ["Unity3D", "Java","NodeJs","Database"],
-      "offers":["Unity3D Programmer", "Front-end", "Back-end", "Testing"],
-      "games":["Runaway Boy", "Space Invader", "Breakout", "Battle City", "Angry Bird", "Snake", "Fishing Joy"],
-      "bsApp":["User Management System using JavaEE and MySQL", "Travel Website using JavaEE, MySQL and Redis", "User Management system using NodeJs, Express","Forum website using NodeJs, Express, Mongoose"],
-      "csApp":["Student Management System using DataGridView and MySQL", "Music Player", "Calculator", "BMI Calculator using DataGridView", "multi-player Plane Shooting Game using Socket"],
-    }
+  res.render('About_Me', {
+      title:"About Me",
+      layout: './layouts/layout1'
   })
 })
 
 /* GET projects_unity page*/
 router.get('/projectsUnity', function (req, res, next) {
-  res.render('projectsUnity.ejs', {data:{
-      "title": "Unity3D Projects",
-      "things": ["Unity3D", "Java","NodeJs","Database"]
-
-    }
+  res.render('projectsUnity.ejs', {
+      title: "Unity3D Projects",
+      layout: './layouts/layout1'
   })
 })
 
 /* GET projects_web pages*/
 router.get('/projectsWeb', function (req, res, next) {
-  res.render('projectsWeb.ejs', {data:{
-      "title": "Web Projects",
-      "things": ["Unity3D", "Java","NodeJs","Database"]
-    }
-
+  res.render('projectsWeb.ejs', {
+      title: "Web Projects",
+      layout: './layouts/layout1'
   })
 })
 
 /* GET projects_net pages*/
 router.get('/projectsNet', function(req,res,next){
-  res.render('projectsNet', {data:{
-      "title":".Net Projects",
-      "things": ["Unity3D", "Java","NodeJs","Database"]
-    }
-
+  res.render('projectsNet', {
+      title:".Net Projects",
+      layout: './layouts/layout1'
   })
 })
 
 /* GET services page*/
 router.get('/services',function (req,res,next) {
-  res.render('services.ejs', {data:{
-      "title": "Services",
-      "things": ["Unity3D", "Java","NodeJs","Database"],
-      "offers":["Unity3D Programmer", "Front-end", "Back-end", "Testing"],
-    }
-
+  res.render('services.ejs', {
+      title: "Services",
+      layout: './layouts/layout1'
   })
 })
 
 
 /* GET contact_me page*/
 router.get('/contactme', function (req, res, next) {
-  res.render('contact', {data: {
-      "title": "Contact Me"
-    }
+  res.render('contact', {
+      title: "Contact Me",
+      layout: './layouts/layout2'
   })
 })
 
@@ -171,17 +156,6 @@ router.post('/send', function (req, res, next) {
 
 })
 
-/* GET ask for content */
-router.get('/content', function (req, res, next) {
-    res.render('content.ejs', {data: {
-            "title":"About Me",
-            "things": ["Unity3D", "Java","NodeJs","Database"],
-            "offers":["Unity3D Programmer", "Front-end", "Back-end", "Testing"],
-            "games":["Runaway Boy", "Space Invader", "Breakout", "Battle City", "Angry Bird", "Snake", "Fishing Joy"],
-        }
-    })
-})
-
 /*GET contacts view page*/
 router.get('/contacts', ensureAuthenticated, (req,res) => {
     //call find method
@@ -191,9 +165,10 @@ router.get('/contacts', ensureAuthenticated, (req,res) => {
         }
 
         res.render('contacts', {
-            data: { 'title': 'Contacts' },
+            title: 'Contacts',
             username: req.user.username,
-            contacts: contacts
+            contacts: contacts,
+            layout: './layouts/layout2'
         });
     })
 
@@ -202,8 +177,9 @@ router.get('/contacts', ensureAuthenticated, (req,res) => {
 /*GET add contact*/
 router.get('/contacts/new',ensureAuthenticated, (req, res) => {
     res.render('new', {
-        data:{'title': 'Add'},
-        username:req.user.username
+        title: 'Add',
+        username:req.user.username,
+        layout: './layouts/layout2'
     });
 })
 
@@ -230,9 +206,10 @@ router.get('/contacts/modify', ensureAuthenticated, (req,res)=>{
 
         // render modify ejs, show contact info
         res.render('modify', {
-            data: {'title': 'Modify'},
+            title: 'Modify',
             username:req.user.username,
-            contact:contact
+            contact:contact,
+            layout: './layouts/layout2'
         })
     })
 

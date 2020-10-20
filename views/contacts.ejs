@@ -1,43 +1,13 @@
-<!-- File Name: Contact.ejs -->
+<!-- File Name: Contacts.ejs -->
 <!-- Created by: Cong Wang -->
 <!-- Student Number: #301098547 -->
-<!-- Created on: 10.2.2020 -->
+<!-- Created on: 10.19.2020 -->
 
-<!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="/public/images/icon.png">
-
-    <title><%= data.title %></title>
-
-    <!-- Bootstrap core CSS -->
-    <link href="/node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <!--    <link href="../../assets/css/ie10-viewport-bug-workaround.css" rel="stylesheet">-->
-
-    <!-- Custom styles for this template -->
-    <link href="/public/stylesheets/carousel.css" rel="stylesheet">
-    <link href="/public/stylesheets/theme.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/stylesheets/signin.css">
-</head>
-
-<!-- NAVBAR
-================================================== -->
-<body>
-<div class="navbar-wrapper">
-    <div class="container">
-<!--Common header-->
-        <%- include('header'); %>
+<br>
+<br>
+<div class="container">
 
 <h2 class="sub-header">Contacts</h2>
-        <br><br>
 <h3>Welcome,  <%= username %></h3>
 <a class="btn btn-success" href="/contacts/new" target="_blank">Add Contact</a>
 <a href="/users/logout" class="btn btn-primary">Logout</a>
@@ -70,18 +40,6 @@
         </tbody>
     </table>
 </div>
-    </div>
-
 </div>
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>
-    window.jQuery || document.write('<script src="/node_modules/jquery/dist/jquery.min.js"><\/script>')
-</script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="/public/javascripts/holder.min.js"></script>
-</body>
-</html>
+
+
