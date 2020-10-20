@@ -1,4 +1,4 @@
-/*File Name: app.js
+/*File Name: User.js
 Created by: Cong Wang
 Student Number: #301098547
 Created on: 10.19.2020*/

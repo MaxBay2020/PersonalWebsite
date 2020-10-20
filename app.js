@@ -11,7 +11,6 @@ var logger = require('morgan');
 var router = require("./routes/index");
 const expressLayout = require('express-ejs-layouts');
 
-var passport = require('passport');
 var flash = require('connect-flash');
 var session = require('express-session');
 var passport = require('passport');

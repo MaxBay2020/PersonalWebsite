@@ -1,3 +1,9 @@
+/*File Name: passport.js passport config
+Created by: Cong Wang
+Student Number: #301098547
+Created on: 10.19.2020*/
+
+
 const LocalStrategy = require('passport-local').Strategy;
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
