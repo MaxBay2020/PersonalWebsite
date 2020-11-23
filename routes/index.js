@@ -98,6 +98,7 @@ router.post('/send', function (req, res, next) {
   //   "comment":res.body
   // });
     var name = req.body.firstName + ' '+req.body.lastName;
+    console.log(req.body.firstName)
     var phone = req.body.phone;
     var email = req.body.email;
     var comment = req.body.comment;
@@ -151,8 +152,8 @@ router.post('/send', function (req, res, next) {
         }
     });
 
-    //redirect to home page
-    res.redirect('/');
+    //send successfully
+    res.send('1'); 
 
 })
 
